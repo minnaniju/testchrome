@@ -1,0 +1,37 @@
+app:
+  name: LYC-Chromium
+  code: lyc-chromium
+  notify: veative-alerts@ecloudcontrol.com
+
+build:
+  version: 0.1
+  env: DEV
+  build_file: none
+  args:
+    SONARQUBE: enabled
+    SONAR_LOGIN_TOKEN: $${build.token.sonar}
+    SONAR_HOST_URL: https://devclever-india-dev-sonarqube-8-2.0de945bd.lowtouch.cloud
+    SONAR_PROJECT_NAME: lyc-lc
+    SONAR_PROJECT_KEY: lyc-lc
+    SCAN_LANG: node
+    NODE_MODULES: typescript
+  output_files: output/*.zip
+  image_template: node-14.16
+
+deploy:
+  context: DevClever-India/DEV
+  replicas: 2
+  strategy: rolling
+  ready_seconds: 45
+  port:
+    - 8080
+properties:
+  SERVER_PORT: 8080
+  #S3 configuration
+  S3_ACCESS_KEY:
+    vault: S3_ACCESS_KEY
+  S3_SECRET_KEY:
+    vault: S3_SECRET_KEY
+  S3_STATIC_BUCKET: 'lyc-staticcontenet'
+  S3_STATIC_BUCKET_URL: 'https://lyc-staticcontenet.s3.ap-south-1.amazonaws.com/'
+  revision: 31
