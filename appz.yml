@@ -20,5 +20,7 @@ deploy:
     - 80
 properties:
   SERVER_PORT: 8080
-  
-  revision: 33
+  NODE_ENV: production
+  DEBUG: "app:*"
+  PM2: enabled
+  revision: 34
