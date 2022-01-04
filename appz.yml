@@ -24,4 +24,4 @@ properties:
   NODE_ENV: production
   DEBUG: "app:*"
   
-  revision: 35
+  revision: 36
