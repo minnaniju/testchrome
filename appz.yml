@@ -9,8 +9,7 @@ build:
   build_file: none
   
  args:
- 
-   PM2: enabled
+    PM2: enabled
   output_files: output/*.zip
   image_template: node-14.17
 
@@ -26,4 +25,4 @@ properties:
   NODE_ENV: production
   DEBUG: "app:*"
   
-  revision: 38
+  revision: 39
